@@ -8,7 +8,16 @@ use \Psr\Http\Message\ResponseInterface as Response;
 
 require '../vendor/autoload.php';
 
-require '../private/config.php';
+$config['displayErrorDetails'] = true;
+$config['addContentLengthHeader'] = false;
+
+$config['db']['host'] = getenv(DB_HOST);
+$config['db']['user'] = getenv(DB_USER);
+$config['db']['pass'] = getenv(DB_PASS);
+$config['db']['dbname'] = getenv(DB_NAME);
+
+$config['root_pass'] = getenv(ROOT_PASS);
+
 $app = new \Slim\App([
     "settings" => $config
 ]);
