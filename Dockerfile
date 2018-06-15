@@ -2,6 +2,8 @@ FROM php:7.0-apache
 
 RUN a2enmod rewrite
 
+RUN docker-php-ext-install pdo_mysql
+
 RUN curl -sS https://getcomposer.org/installer | \
     php -- --install-dir=/usr/bin/ --filename=composer
 
