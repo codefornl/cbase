@@ -8,7 +8,7 @@ use \Psr\Http\Message\ResponseInterface as Response;
 
 require '../vendor/autoload.php';
 
-$config['displayErrorDetails'] = true;
+$config['displayErrorDetails'] = false;
 $config['addContentLengthHeader'] = false;
 $config['debug'] = false; // FIXME: getenv(DEBUG)
 
