@@ -4,7 +4,7 @@ stages:
   - publishImageConfig:
       dockerfilePath: ./Dockerfile
       buildContext: .
-      tag: clarity-staging:${CICD_EXECUTION_SEQUENCE}
+      tag: cbase-staging:${CICD_EXECUTION_SEQUENCE}
 - name: Deploy
   steps:
   - applyYamlConfig:
