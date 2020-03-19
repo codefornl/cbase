@@ -5,6 +5,7 @@ ENV DB_USER user
 ENV DB_PASS password
 ENV DB_NAME test
 ENV ROOT_PASS danger
+ENV BASE_URI https://cbase.codefor.nl
 
 RUN a2enmod rewrite
 
