@@ -61,14 +61,14 @@ $container['handler'] = function($c) {
  */
 $app->get('/', function (Request $request, Response $response) {
     return $response->withJson([
-        "service" => "cbase: curated sets of case studies of digital tools for government",
+        "service" => "collecties-api: an api for curated sets of use cases of open digital tools in government and civic tech",
         "about" => "https://www.codefor.nl/clarity",
-        "browser" => "http://haltalk.herokuapp.com/explorer/browser.html#" . getenv(BASE_URI),
-        "application" => getenv(BASE_URI),
-        "codebase" => "https://github.com/codefornl/clarity_slim",
+        "codebase" => "https://github.com/codefornl/clarity",
+        "application" => "https://collecties.codefor.nl",
+        "browser" => "http://haltalk.herokuapp.com/explorer/browser.html#" . $request->getUri()->getBaseUrl(),
         "_links" => [
             "self" => [
-                "href" => $request->getUri()->getBaseUrl()
+                "href" => $request->getUri()->getBaseUrl() // FIXME http(s)?
             ],
             "cbases" => [
                 "href" => $request->getUri()->getBaseUrl() . "/cbases"
