@@ -1,5 +1,11 @@
 FROM php:7.0-apache
 
+ENV DB_HOST localhost
+ENV DB_USER user
+ENV DB_PASS password
+ENV DB_NAME test
+ENV ROOT_PASS danger
+
 RUN a2enmod rewrite
 
 RUN docker-php-ext-install pdo_mysql
