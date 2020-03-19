@@ -10,6 +10,7 @@ require '../vendor/autoload.php';
 
 $config['displayErrorDetails'] = true;
 $config['addContentLengthHeader'] = false;
+$config['debug'] = false; // FIXME: getenv(DEBUG)
 
 $config['db']['host'] = getenv(DB_HOST);
 $config['db']['user'] = getenv(DB_USER);
