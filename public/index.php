@@ -63,7 +63,7 @@ $app->get('/', function (Request $request, Response $response) {
         "service" => "cbase: curated sets of case studies of digital tools for government",
         "about" => "https://www.codefor.nl/clarity",
         "browser" => "http://haltalk.herokuapp.com/explorer/browser.html#https://cbase.codefor.nl/",
-        "application" => "https://clarity.codefor.nl",
+        "application" => getenv(BASE_URI),
         "codebase" => "https://github.com/codefornl/clarity_slim",
         "_links" => [
             "self" => [
