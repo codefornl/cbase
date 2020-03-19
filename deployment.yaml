@@ -1,10 +1,10 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: clarity-api-service
+  name: cbase-api-service
 spec:
   selector:
-    app: clarity-api-service
+    app: cbase-api-service
   type: NodePort
   ports:
     - protocol: TCP
@@ -14,23 +14,23 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: clarity-api
+  name: cbase-api
   labels:
-    app: clarity-api-service
+    app: cbase-api-service
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: clarity-api-service
+      app: cbase-api-service
   template:
     metadata:
       labels:
-        app: clarity-api-service
+        app: cbase-api-service
     spec:
       imagePullSecrets:
       - name: pipeline-docker-registry
       containers:
-      - name: clarity-api-service
+      - name: cbase-api-service
         image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
         ports:
         - containerPort: 80
