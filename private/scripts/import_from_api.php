@@ -64,7 +64,7 @@ foreach ($data['_embedded']['cbase'] as $cbase) {
     }
     var_dump($sql);
     $stmt = $pdo->prepare($sql);
-    //$stmt->execute($values);
+    $stmt->execute($values);
     foreach ($cbase['_embedded']['usecase'] as $usecase) {
         // sql insert usecase
         $sql = "INSERT INTO usecase SET\n";
@@ -75,7 +75,7 @@ foreach ($data['_embedded']['cbase'] as $cbase) {
         }
         var_dump($sql);
         $stmt = $pdo->prepare($sql);
-        //$stmt->execute($values);
+        $stmt->execute($values);
         exit();
     }
 }
