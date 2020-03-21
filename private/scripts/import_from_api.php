@@ -43,10 +43,19 @@ $fields = [
 
 foreach ($data['_embedded']['cbase'] as $cbase) {
     // sql insert usecase
-    var_dump($cbase);
+    $sql = "INSERT INTO cbase SET\n";
+    foreach ($fields['cbase'] as $field) {
+      $sql .= "{$field} = :{$field} /* {$cbase[$field]} */\n";
+    }
+    var_dump($sql);
+    // pdo
     foreach ($cbase['_embedded']['usecase'] as $usecase) {
         // sql insert usecase
-        var_dump($usecase);
+        $sql = "INSERT INTO usecase SET\n";
+        foreach ($fields['usecase'] as $field) {
+          $sql .= "{$field} = :{$field} /* {$usecase[$field]} */\n";
+        }
+        var_dump($sql);
         exit();
     }
 }
