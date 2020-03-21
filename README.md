@@ -13,3 +13,15 @@ docker run -v $(pwd)/public:/var/www/html/public -v $(pwd)/private:/var/www/html
 ```
 
 You can then access the site at http://localhost:8080 and make changes in your local php files.
+
+## Using Docker Compose in development
+
+To create and run cbase `docker-compose up -d`
+
+### Creating the database in development
+
+To go into the docker `docker exec -it <container> /bin/bash`
+
+Go to the private dir of the mariadb container and run `mysql -u user -p test < create_tables.dist.sql`
+
+Go to the private/scripts dir of the cbase container and run `php import_from_api.php`
