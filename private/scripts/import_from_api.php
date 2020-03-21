@@ -56,7 +56,7 @@ $fields = [
 
 foreach ($data['_embedded']['cbase'] as $cbase) {
     // sql insert usecase
-    $sql = "INSERT INTO cbase SET\n";
+    $sql = "INSERT INTO cbases SET\n";
     $values = [];
     foreach ($fields['cbase'] as $field) {
       $sql .= "{$field} = :{$field} /* {$cbase[$field]} */\n";
@@ -64,10 +64,10 @@ foreach ($data['_embedded']['cbase'] as $cbase) {
     }
     var_dump($sql);
     $stmt = $pdo->prepare($sql);
-    $stmt->execute($values);
+    //$stmt->execute($values);
     foreach ($cbase['_embedded']['usecase'] as $usecase) {
         // sql insert usecase
-        $sql = "INSERT INTO usecase SET\n";
+        $sql = "INSERT INTO projects SET\n";
         $values = [];
         foreach ($fields['usecase'] as $field) {
           $sql .= "{$field} = :{$field} /* {$usecase[$field]} */\n";
@@ -75,7 +75,7 @@ foreach ($data['_embedded']['cbase'] as $cbase) {
         }
         var_dump($sql);
         $stmt = $pdo->prepare($sql);
-        $stmt->execute($values);
+        //$stmt->execute($values);
         exit();
     }
 }
