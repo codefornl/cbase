@@ -5,11 +5,11 @@ $data = json_decode($json, true);
 
 $conf = [
   'db' => [
-    'name' => 'cbase',
-    'host' => 'localhost',
+    'name' => getenv('DB_NAME'),
+    'host' => getenv('DB_HOST'),
     'port' => '3306',
-    'user' => 'cbase',
-    'pass' => 'password' // ENV
+    'user' => getenv('DB_USER'),
+    'pass' => getenv('DB_PASS') // ENV
   ]
 ];
 
