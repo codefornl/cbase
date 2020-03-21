@@ -8,14 +8,17 @@ use \Psr\Http\Message\ResponseInterface as Response;
 
 require '../vendor/autoload.php';
 
-$config['displayErrorDetails'] = false;
 $config['addContentLengthHeader'] = false;
-$config['debug'] = false; // FIXME: getenv(DEBUG)
+$config['debug']
+  = $config['displayErrorDetails']
+  = getenv(DEBUG_MODE);
 
-$config['db']['host'] = getenv(DB_HOST);
-$config['db']['user'] = getenv(DB_USER);
-$config['db']['pass'] = getenv(DB_PASS);
-$config['db']['dbname'] = getenv(DB_NAME);
+$config['db'] = [
+  'host' => getenv(DB_HOST),
+  'name' => getenv(DB_NAME),
+  'user' => getenv(DB_USER),
+  'pass' => getenv(DB_PASS),
+];
 
 $config['root_pass'] = getenv(ROOT_PASS);
 
@@ -42,8 +45,11 @@ $app->add(function ($req, $res, $next) {
 $container = $app->getContainer();
 $container['db'] = function($c) {
     $db = $c['settings']['db'];
-    $pdo = new PDO("mysql:host=" . $db['host'] . ";dbname=" . $db['dbname'] . ";charset=utf8",
-        $db['user'], $db['pass']);
+    $pdo = new PDO(
+      "mysql:host={$db['host']};dbname={$db['name']};charset=utf8",
+      $db['user'],
+      $db['pass']
+    );
     $pdo->setAttribute(PDO::MYSQL_ATTR_INIT_COMMAND, 'SET NAMES utf8');
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
@@ -56,7 +62,7 @@ $container['handler'] = function($c) {
 
 /**
  * GET /
- * 
+ *
  * Get api home.
  */
 $app->get('/', function (Request $request, Response $response) {
@@ -82,7 +88,7 @@ $app->get('/', function (Request $request, Response $response) {
 
 /**
  * GET /token
- * 
+ *
  * Get token pair.
  */
 $app->get('/token', function (Request $request, Response $response) {

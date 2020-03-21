@@ -1,11 +1,11 @@
 FROM php:7.0-apache
 
-ENV DB_HOST localhost
+ENV DB_HOST 127.0.0.1
+ENV DB_NAME test
 ENV DB_USER user
 ENV DB_PASS password
-ENV DB_NAME test
 ENV ROOT_PASS danger
-ENV BASE_URI https://cbase.codefor.nl
+ENV DEBUG_MODE false
 
 RUN a2enmod rewrite
 
