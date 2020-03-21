@@ -3,7 +3,6 @@ services:
 
     mariadb:
       image: mariadb:10.4
-      container_name: test-mariadb
       working_dir: /application
       volumes:
         - .:/application
@@ -17,7 +16,6 @@ services:
 
     cbase:
       build: .
-      container_name: test-php-fpm
       environment:
         - DB_HOST=mariadb
         - DB_NAME=test
