@@ -11,16 +11,16 @@ require '../vendor/autoload.php';
 $config['addContentLengthHeader'] = false;
 $config['debug']
   = $config['displayErrorDetails']
-  = getenv(DEBUG_MODE);
+  = getenv('DEBUG_MODE');
 
 $config['db'] = [
-  'host' => getenv(DB_HOST),
-  'name' => getenv(DB_NAME),
-  'user' => getenv(DB_USER),
-  'pass' => getenv(DB_PASS),
+  'host' => getenv('DB_HOST'),
+  'name' => getenv('DB_NAME'),
+  'user' => getenv('DB_USER'),
+  'pass' => getenv('DB_PASS'),
 ];
 
-$config['root_pass'] = getenv(ROOT_PASS);
+$config['root_pass'] = getenv('ROOT_PASS');
 
 $app = new \Slim\App([
     "settings" => $config
